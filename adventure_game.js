@@ -66,4 +66,4 @@ Hero.prototype = {
   var food1 = new Food('bread', false, 20);
   var food2 = new Food('beer', false, 40);
 
-  module.exports = [hero1, food1, food2, rat1, villain]
+  module.exports = [Hero, Food, Rat]
