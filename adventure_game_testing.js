@@ -4,11 +4,11 @@ var expect = chai.expect;
 
 var Hero = require('./adventure_game')[0];
 var Food = require('./adventure_game')[1];
-var Rat = require('./adventure_game')[2];
+var Animal = require('./adventure_game')[2];
 
 
 
-describe('hero', function(){
+describe('Hero', function(){
   it('can speak their name', function(){
     var hero = new Hero('Callum', 100, 'beer');
     expect(hero.talk()).equal("I am a hero called Callum");
@@ -63,17 +63,24 @@ describe('hero', function(){
     hero.spells.push("protection");
     villain.hit(hero, 20);
     expect(hero.health).to.equal(100);
-
   });
 
 });
 
 
-describe('rat', function(){
-  it('can poison food by touching it', function(){
-    var rat = new Rat('Scabbers');
+describe('Animals', function(){
+  it('rat can poison food by touching it', function(){
+    var rat = new Animal('Scabbers', 'rat');
     var food = new Food('bread', false, 20);
     rat.touch(food);
     expect(food.poisoned).to.equal(true);
+  });
+
+  it('rat can be turned into a bunny with a bunnify spell', function(){
+    var rat = new Animal('Scabbers', 'rat');
+    var hero = new Hero('Beth', 100, 'pizza');
+    hero.spells.push("bunnify");
+    hero.bunnify(rat, "Fluffy");
+    expect(rat.type).to.equal("bunny");
   });
 });

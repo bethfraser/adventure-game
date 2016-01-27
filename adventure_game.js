@@ -47,6 +47,13 @@ Hero.prototype = {
       if (!victim.spells.contains("protection")){
       victim.health -= damage;
       }
+    },
+    bunnify: function(rat, newName){
+      if(this.spells.contains("bunnify")){
+        rat.type = "bunny";
+        rat.name = newName;
+      }
+      
     }
 
   }
@@ -58,22 +65,30 @@ Hero.prototype = {
     this.repValue = repValue;
   }
 
-  var Rat = function(name){
+  var Animal = function(name, type){
     this.name = name;
+    this.type = type;
   }
 
-  Rat.prototype = {
+
+  Animal.prototype = {
     touch: function(food){
+      if (this.type = "rat"){
       food.poisoned = true;
-    }
+      }
+  }
   }
 
 
-  // var hero1 = new Hero('Callum', 100, 'beer');
-  // var villain = new Hero('Beth', 100, 'pizza');
-  // var rat1 = new Rat("ratty");
+//   var hero1 = new Hero('Callum', 100, 'beer');
+//   var villain = new Hero('Beth', 100, 'pizza');
+//   var rat1 = new Animal("ratty", "rat");
+
+// hero1.spells.push("bunnify")
+// hero1.bunnify(rat1,"Fluffy");
+// console.log(rat1);
   // var food1 = new Food('bread', false, 20);
   // var food2 = new Food('beer', false, 40);
 
 
-  module.exports = [Hero, Food, Rat]
+  module.exports = [Hero, Food, Animal]
